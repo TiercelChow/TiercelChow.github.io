@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>my-first-blog | 雄鹰的小破站</title>
+  <title>搭建个人博客 | 雄鹰的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my first blogtest next pageend">
+  <meta name="description" content="1. 环境准备NodeJS和NPM的安装可选择官网下载安装包或者命令行进行安装 验证安装： 12$ sudo node -v$ sudo npm -v  这里是否使用sudo结果不一样，这是终端或远程连接终端的缓存问题，加sudo看到的是最新的版本号，不加sudo命令看到的是前一安装版本的版本号，关闭相应终端或远程连接终端，然后与重新连接即可解决这个问题。 切换到root用户模式下1$ sudo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my-first-blog">
-<meta property="og:url" content="http://yoursite.com/2020/07/02/my-first-blog/index.html">
+<meta property="og:title" content="搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2020/07/02/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="雄鹰的小破站">
-<meta property="og:description" content="my first blogtest next pageend">
+<meta property="og:description" content="1. 环境准备NodeJS和NPM的安装可选择官网下载安装包或者命令行进行安装 验证安装： 12$ sudo node -v$ sudo npm -v  这里是否使用sudo结果不一样，这是终端或远程连接终端的缓存问题，加sudo看到的是最新的版本号，不加sudo命令看到的是前一安装版本的版本号，关闭相应终端或远程连接终端，然后与重新连接即可解决这个问题。 切换到root用户模式下1$ sudo">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-02T12:33:05.000Z">
-<meta property="article:modified_time" content="2020-07-02T14:11:05.896Z">
+<meta property="article:published_time" content="2020-07-03T03:12:08.000Z">
+<meta property="article:modified_time" content="2020-07-03T03:16:11.598Z">
 <meta property="article:author" content="TiercelChow">
 <meta name="twitter:card" content="summary">
   
@@ -154,28 +154,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-my-first-blog" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-搭建个人博客" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      my-first-blog
+      搭建个人博客
     </h1>
   
 
         
-        <a href="/2020/07/02/my-first-blog/" class="archive-article-date">
-  	<time datetime="2020-07-02T12:33:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
+        <a href="/2020/07/02/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2020-07-03T03:12:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="my-first-blog"><a href="#my-first-blog" class="headerlink" title="my first blog"></a>my first blog</h2><p>test</p>
-<h2 id="next-page"><a href="#next-page" class="headerlink" title="next page"></a>next page</h2><p>end</p>
+        <h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><h3 id="NodeJS和NPM的安装"><a href="#NodeJS和NPM的安装" class="headerlink" title="NodeJS和NPM的安装"></a>NodeJS和NPM的安装</h3><p>可选择官网下载安装包或者命令行进行安装</p>
+<p>验证安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo node -v</span><br><span class="line">$ sudo npm -v</span><br></pre></td></tr></table></figure>
+
+<p>这里是否使用sudo结果不一样，这是终端或远程连接终端的缓存问题，加sudo看到的是最新的版本号，不加sudo命令看到的是前一安装版本的版本号，关闭相应终端或远程连接终端，然后与重新连接即可解决这个问题。</p>
+<h3 id="切换到root用户模式下"><a href="#切换到root用户模式下" class="headerlink" title="切换到root用户模式下"></a>切换到root用户模式下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo su</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装CNPM"><a href="#安装CNPM" class="headerlink" title="安装CNPM"></a>安装CNPM</h3><p>由于镜像源下载速度很慢，因此先通过NPM下载安装CNPM。使用淘宝源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnmp --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>验证安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm -v</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装HEXO框架"><a href="#安装HEXO框架" class="headerlink" title="安装HEXO框架"></a>安装HEXO框架</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>验证安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -v</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立blog文件夹"><a href="#建立blog文件夹" class="headerlink" title="建立blog文件夹"></a>建立blog文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir myblog</span><br></pre></td></tr></table></figure>
+
+<p>文件名任意，这里以myblog为例</p>
+<p>如果想要推翻重来，删除myblog文件夹即可</p>
+<p>进入文件夹：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd myblog</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-初始化博客"><a href="#2-初始化博客" class="headerlink" title="2. 初始化博客"></a>2. 初始化博客</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo hexo init</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动博客"><a href="#启动博客" class="headerlink" title="启动博客"></a>启动博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+
+<p>启动成功后，在浏览器输入localhost:4000即可访问本地网站</p>
+<h2 id="3-新建一篇博客"><a href="#3-新建一篇博客" class="headerlink" title="3. 新建一篇博客"></a>3. 新建一篇博客</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo n &quot;blogname&quot;</span><br></pre></td></tr></table></figure>
+
+<p>执行命令后即会创建一个md文件，进入该文件编写博客内容即可</p>
+<p>退回到原目录</p>
+<p>清理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+
+<p>启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-将博客部署到远端"><a href="#4-将博客部署到远端" class="headerlink" title="4. 将博客部署到远端"></a>4. 将博客部署到远端</h2><h3 id="在GitHub新建一个仓库"><a href="#在GitHub新建一个仓库" class="headerlink" title="在GitHub新建一个仓库"></a>在GitHub新建一个仓库</h3><p>注意新建的仓库名一定和个人的GitHub用户名对应：</p>
+<p>username.github.io</p>
+<h3 id="在博客目录下安装git部署插件"><a href="#在博客目录下安装git部署插件" class="headerlink" title="在博客目录下安装git部署插件"></a>在博客目录下安装git部署插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<h3 id="对-config-yml文件进行设置"><a href="#对-config-yml文件进行设置" class="headerlink" title="对_config.yml文件进行设置"></a>对_config.yml文件进行设置</h3><p>文件结尾处修改：</p>
+<p><strong>注意冒号后面有空格</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">	type: git</span><br><span class="line">	repo: 刚刚在GitHub上新建仓库的地址</span><br><span class="line">	branch: master</span><br></pre></td></tr></table></figure>
+
+<h3 id="部署至远端"><a href="#部署至远端" class="headerlink" title="部署至远端"></a>部署至远端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<p>之后输入GitHub用户名和密码即可，若git事先未进行配置，先配置用户名和邮箱地址，否则会出现报错</p>
+<h3 id="访问："><a href="#访问：" class="headerlink" title="访问："></a>访问：</h3><p>在浏览器输入https://仓库名 即可进行访问</p>
+<h2 id="5-更换博客主题"><a href="#5-更换博客主题" class="headerlink" title="5. 更换博客主题"></a>5. 更换博客主题</h2><p>进入：github.com/litten/hexo-theme-yilia</p>
+<h3 id="将项目克隆到本地"><a href="#将项目克隆到本地" class="headerlink" title="将项目克隆到本地"></a>将项目克隆到本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia.git themes&#x2F;yilia</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-config文件"><a href="#修改-config文件" class="headerlink" title="修改_config文件"></a>修改_config文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将theme修改为：</span><br><span class="line">theme: yilia</span><br></pre></td></tr></table></figure>
+
+<h3 id="清理，生成，启动"><a href="#清理，生成，启动" class="headerlink" title="清理，生成，启动"></a>清理，生成，启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+
+<h3 id="推送至远端"><a href="#推送至远端" class="headerlink" title="推送至远端"></a>推送至远端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<p>至此，个人博客部署完成！</p>
+<h2 id="特别鸣谢："><a href="#特别鸣谢：" class="headerlink" title="特别鸣谢："></a>特别鸣谢：</h2><p>​                    CodeSheep</p>
 
       
 
@@ -193,13 +257,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="https://sz.btfs.mail.ftn.qq.com/ftn_handler/946e195831a8af67222ec77181dbbcd0e2ea12b5be7723178e0845812d11c633786e16dcb07cbebc9a5813ca9a987f7738c74a33b120a1fece41efe416f34f8a?compressed=0&amp;dtype=1&amp;fname=1593697244.jpg">
+                      <img class="reward-img" src="https://sz.btfs.mail.ftn.qq.com/ftn_handler/5664d65fe3f1b0afcc820f0c557579be6690b92fd6eadc5ff15b2a884366cef3b47cb8c8a1b1daca26a148aa98f0ffe661609ae13fc50ec6487e2922ad47e604?compressed=0&amp;dtype=1&amp;fname=1593697244.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="https://sz.btfs.mail.ftn.qq.com/ftn_handler/7d7c43db291425291da85bd452338907cdd3047ab8bfefa8ea65a3fe35ca279b4871caff6b927587a8c4f1c0e69dd67d3372f9a0225b355a1f2dbfe0afefc1e5?compressed=0&amp;dtype=1&amp;fname=mm_facetoface_collect_qrcode_1593697272442.png">
+                      <img class="reward-img" src="https://sz.btfs.mail.ftn.qq.com/ftn_handler/84950d0bd53ea3ae866b748e8742642c19156ff84f6237f382a82d030dd2da4335861f3a774357d53778ac79d9aecf92749ab542a20a79d3182b077b1872eeec?compressed=0&amp;dtype=1&amp;fname=mm_facetoface_collect_qrcode_1593697272442.png">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -265,7 +329,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/02/my-first-blog/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/02/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -278,6 +342,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/07/02/C++-Primer%E7%AC%AC%E3%80%87%E9%83%A8%E5%88%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++-Primer读书笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2020/07/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
@@ -300,6 +373,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-环境准备"><span class="toc-number">1.</span> <span class="toc-text">1. 环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NodeJS和NPM的安装"><span class="toc-number">1.1.</span> <span class="toc-text">NodeJS和NPM的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换到root用户模式下"><span class="toc-number">1.2.</span> <span class="toc-text">切换到root用户模式下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装CNPM"><span class="toc-number">1.3.</span> <span class="toc-text">安装CNPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装HEXO框架"><span class="toc-number">1.4.</span> <span class="toc-text">安装HEXO框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立blog文件夹"><span class="toc-number">1.5.</span> <span class="toc-text">建立blog文件夹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-初始化博客"><span class="toc-number">2.</span> <span class="toc-text">2. 初始化博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-number">2.1.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动博客"><span class="toc-number">2.2.</span> <span class="toc-text">启动博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-新建一篇博客"><span class="toc-number">3.</span> <span class="toc-text">3. 新建一篇博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-将博客部署到远端"><span class="toc-number">4.</span> <span class="toc-text">4. 将博客部署到远端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在GitHub新建一个仓库"><span class="toc-number">4.1.</span> <span class="toc-text">在GitHub新建一个仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在博客目录下安装git部署插件"><span class="toc-number">4.2.</span> <span class="toc-text">在博客目录下安装git部署插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对-config-yml文件进行设置"><span class="toc-number">4.3.</span> <span class="toc-text">对_config.yml文件进行设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署至远端"><span class="toc-number">4.4.</span> <span class="toc-text">部署至远端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问："><span class="toc-number">4.5.</span> <span class="toc-text">访问：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-更换博客主题"><span class="toc-number">5.</span> <span class="toc-text">5. 更换博客主题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将项目克隆到本地"><span class="toc-number">5.1.</span> <span class="toc-text">将项目克隆到本地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-config文件"><span class="toc-number">5.2.</span> <span class="toc-text">修改_config文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理，生成，启动"><span class="toc-number">5.3.</span> <span class="toc-text">清理，生成，启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推送至远端"><span class="toc-number">5.4.</span> <span class="toc-text">推送至远端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特别鸣谢："><span class="toc-number">6.</span> <span class="toc-text">特别鸣谢：</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -455,11 +541,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="http://github.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GitHub</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
+              <a href="http://www.baidu.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>BaiDu</a>
             </li>
           
             <li class="search-li">
