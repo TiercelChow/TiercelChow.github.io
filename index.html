@@ -152,6 +152,473 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/MySQL/">MySQL</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/11/MySQL/" class="archive-article-date">
+  	<time datetime="2020-07-12T01:37:06.671Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MySQL</p>
+<p>[toc]</p>
+<h2 id="1-MySQL-8的安装，升级和新特性（）"><a href="#1-MySQL-8的安装，升级和新特性（）" class="headerlink" title="1. MySQL 8的安装，升级和新特性（）"></a>1. MySQL 8的安装，升级和新特性（）</h2><h2 id="2-数据库操作"><a href="#2-数据库操作" class="headerlink" title="2. 数据库操作"></a>2. 数据库操作</h2><h3 id="2-1-操作数据库"><a href="#2-1-操作数据库" class="headerlink" title="2.1 操作数据库"></a>2.1 操作数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##显示当前已经存在的数据库</span><br><span class="line">SHOW DATABASES;</span><br><span class="line">##创建名为database_name的数据库</span><br><span class="line">CREATE DATABASE database_name;</span><br><span class="line">##选择数据库</span><br><span class="line">USE database_name;</span><br><span class="line">##删除数据库</span><br><span class="line">DROP DATABASE database_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-什么是存储引擎"><a href="#2-2-什么是存储引擎" class="headerlink" title="2.2 什么是存储引擎"></a>2.2 什么是存储引擎</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">##首先确定数据库管理系统所支持的存储引擎</span><br><span class="line">SHOW ENGINES;</span><br><span class="line">##也可以通过下列语句进行查询</span><br><span class="line">SHOW ENGINES \G;</span><br><span class="line">##或者</span><br><span class="line">SHOW VARIABLES LIKE &#39;have%&#39;;</span><br><span class="line">##创建表时，若没有指定存储引擎，表的存储引擎为默认的存储引擎</span><br><span class="line">##查看默认存储引擎</span><br><span class="line">SHOW VARIABLES LIKE &#39;default_storage_engine&#39;;</span><br><span class="line">##修改默认存储引擎（以修改为NyISAM为例，修改后通过查询语句验证）</span><br><span class="line">SET DEFAULT_STORAGE_ENGINE&#x3D;MyISAM;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查询数据库管理系统所支持的存储引擎得到各参数意义：</p>
+<ul>
+<li>Engine参数表示存储引擎名称</li>
+<li>Suppor参数表示MySQL数据库管理系统是否支持该存储引擎</li>
+<li>DEFAULT表示系统默认支持的存储引擎</li>
+<li>Comment参数表示对存储引擎的评论</li>
+<li>Transactions参数表示存储引擎是否支持事务</li>
+<li>XA参数表示存储引擎所支持的分布式是否符合XA规范</li>
+<li>Savepoints参数表示存储引擎是否指出事务处理的保存点</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>查看默认存储引擎得到的各参数的意义</p>
+<ul>
+<li>Variable_name参数表示存储引擎的名字</li>
+<li>Value参数表示MySQL数据库管理系统是否支持存储引擎，YES:支持，NO:不支持，DISABLE:支持但还未开始</li>
+</ul>
+</blockquote>
+<h3 id="2-3-选择存储引擎"><a href="#2-3-选择存储引擎" class="headerlink" title="2.3 选择存储引擎"></a>2.3 选择存储引擎</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>InnoDB</th>
+<th>MyISAM</th>
+<th>MENMORY</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事务安全</td>
+<td>支持</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>存储显示</td>
+<td>64TB</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>空间使用</td>
+<td>高</td>
+<td>低</td>
+<td>低</td>
+</tr>
+<tr>
+<td>内存使用</td>
+<td>高</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>插入数据的速度</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>锁机制</td>
+<td>行锁</td>
+<td>表锁</td>
+<td>表锁</td>
+</tr>
+<tr>
+<td>对外键的支持</td>
+<td>支持</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>数据可压缩</td>
+<td>无</td>
+<td>支持</td>
+<td>无</td>
+</tr>
+<tr>
+<td>批量插入速度</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+</tr>
+</tbody></table>
+<p>在同一个数据库中，不同的表可以使用不同的存储引擎：如果一个表要求较高的事务处理，可以选择InnoDB；如果一个表会被频繁查询，可以选择MyISAM存储引擎；如果时一个用于查询的临时表，那么可以选择MEMORY存储引擎。</p>
+<h2 id="3-数据表操作"><a href="#3-数据表操作" class="headerlink" title="3. 数据表操作"></a>3. 数据表操作</h2><h3 id="3-1-数据表的设计理念"><a href="#3-1-数据表的设计理念" class="headerlink" title="3.1 数据表的设计理念"></a>3.1 数据表的设计理念</h3><p>表中数据库对象：</p>
+<blockquote>
+<ul>
+<li>列（Column）：属性列，创建时必须指定列的名字和数据类型。</li>
+<li>索引（Index）：根据数据库表列建立起来的顺序，提供了快速访问数据的途径且可监督表的数据，使其索引指向的列中的数据不重复。</li>
+<li>触发器（Trigger）：用户定义的事务的集合，当对一个表中的数据进行插入，更新或者删除时，这组命令就会自动执行，累哦用来确保数据的完整性和安全性。</li>
+</ul>
+</blockquote>
+<ol>
+<li>标准化和规范化：</li>
+</ol>
+<blockquote>
+<ul>
+<li>第一范式（1NF），确保每列保持原子性。</li>
+<li>第二范式（2NF），确保每列都和主键相关。</li>
+<li>第三范式（3NF），确保每列都和主键直接相关，而不是间接相关。</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li><p>数据驱动</p>
+</li>
+<li><p>考虑各种变化</p>
+</li>
+<li><p>表和表的关系</p>
+</li>
+</ol>
+<blockquote>
+<p>数据库里表的关系有三种：一对一，一对多，多对多。</p>
+</blockquote>
+<h3 id="3-2-数据库中的数据类型（）"><a href="#3-2-数据库中的数据类型（）" class="headerlink" title="3.2 数据库中的数据类型（）"></a>3.2 数据库中的数据类型（）</h3><h4 id="3-2-1-整数类型"><a href="#3-2-1-整数类型" class="headerlink" title="3.2.1 整数类型"></a>3.2.1 整数类型</h4><table>
+<thead>
+<tr>
+<th>整数类型</th>
+<th>字节数</th>
+<th>无符号数的取值范围</th>
+<th>有符号数的取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TINYINT</td>
+<td>1</td>
+<td>0~225</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2</td>
+<td>0~65535</td>
+<td>-32768~32767</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3</td>
+<td>0~16777215</td>
+<td>-8388608~8388607</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>4</td>
+<td>0~4294967295</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>INTEGER</td>
+<td>4</td>
+<td>0~4294967295</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8</td>
+<td>0~18446744073709551615</td>
+<td>-9223372036854775808~9223372036854775807</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##使用命令HELP INT可以查看INT的数据范围</span><br><span class="line">HELP INT;</span><br></pre></td></tr></table></figure>
+
+<p>如果数据插入超出了规定的范围，就会插入失败。</p>
+<h4 id="3-2-2-浮点数类型和定点数类型"><a href="#3-2-2-浮点数类型和定点数类型" class="headerlink" title="3.2.2 浮点数类型和定点数类型"></a>3.2.2 浮点数类型和定点数类型</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>字节数</th>
+<th>负数的取值范围</th>
+<th>非负数的取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FLOAT</td>
+<td>4</td>
+<td>-3.402823466E+38~-1.175494351E-38</td>
+<td>0和1.175494351E-38~3.402823466E+38</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>8</td>
+<td>-1.7976931348623157E+308~-2.2250738585072014E-308</td>
+<td>0和2.2250738585072014E-308~1.7976931348623157E+308</td>
+</tr>
+<tr>
+<td>DECIMAL(M,D)或DEC(M,D)</td>
+<td>M+2</td>
+<td>同DOUBLE类型</td>
+<td>同DOUBLE类型</td>
+</tr>
+</tbody></table>
+<h4 id="3-2-3-日期与时间"><a href="#3-2-3-日期与时间" class="headerlink" title="3.2.3 日期与时间"></a>3.2.3 日期与时间</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>字节数</th>
+<th>取值范围</th>
+<th>零值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>YEAR</td>
+<td>1</td>
+<td>1901~2155</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>4</td>
+<td>1000-01~9999-12-31</td>
+<td>0000:00:00</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>3</td>
+<td>-838:59:59~838:59:59</td>
+<td>00-00-00</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>8</td>
+<td>1000-01 00:00:00~9999-12-31 23:59:59</td>
+<td>0000-00-00 00:00:00</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>4</td>
+<td>197000101080001~2308011911407</td>
+<td>00000000000000</td>
+</tr>
+</tbody></table>
+<p>通过函数NOW()可获取系统当前时间（DATATIME或TIMESTAMP类型）</p>
+<h4 id="3-2-4-字符串类型"><a href="#3-2-4-字符串类型" class="headerlink" title="3.2.4 字符串类型"></a>3.2.4 字符串类型</h4><h4 id="3-2-5-二进制类型"><a href="#3-2-5-二进制类型" class="headerlink" title="3.2.5 二进制类型"></a>3.2.5 二进制类型</h4><h4 id="3-2-6-JSON类型以及MySQL-8-JSON增强"><a href="#3-2-6-JSON类型以及MySQL-8-JSON增强" class="headerlink" title="3.2.6 JSON类型以及MySQL 8 JSON增强"></a>3.2.6 JSON类型以及MySQL 8 JSON增强</h4><h3 id="3-3-MySQL-8新特性：字符集与排序规则"><a href="#3-3-MySQL-8新特性：字符集与排序规则" class="headerlink" title="3.3 MySQL 8新特性：字符集与排序规则"></a>3.3 MySQL 8新特性：字符集与排序规则</h3><h3 id="3-4-创建表"><a href="#3-4-创建表" class="headerlink" title="3.4 创建表"></a>3.4 创建表</h3><p><strong>创建表的语法形式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tablename(</span><br><span class="line">    属性名 数据类型 [完整性约束条件],</span><br><span class="line">    属性名 数据类型 [完整性约束条件],</span><br><span class="line">    ......</span><br><span class="line">	属性名 数据类型 [完整性约束条件]);</span><br></pre></td></tr></table></figure>
+
+<p>注意对数据库操作前需要通过USE语句选择数据库。</p>
+<p><strong>创建带JSON类型的表</strong></p>
+<h3 id="3-5-查看表结构"><a href="#3-5-查看表结构" class="headerlink" title="3.5 查看表结构"></a>3.5 查看表结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##DESCRIBE语句查看表定义(table_name为所要查看对象定义信息的名字，DESCRIBE可缩写为DESC)</span><br><span class="line">DESCRIBE table_name;</span><br><span class="line">##SHOW CREATE TABLE语句查看表详细定义</span><br><span class="line">SHOW CREATE TABLE table_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-删除表"><a href="#3-6-删除表" class="headerlink" title="3.6 删除表"></a>3.6 删除表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##可使用DROP TABLE语句删除没有被其他关联的普通表</span><br><span class="line">DROP TABLE table_name;</span><br><span class="line">##删除后可通过DESCRIBE语句验证是否被删除</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-修改表"><a href="#3-7-修改表" class="headerlink" title="3.7 修改表"></a>3.7 修改表</h3><h4 id="3-7-1-修改表名"><a href="#3-7-1-修改表名" class="headerlink" title="3.7.1 修改表名"></a>3.7.1 修改表名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##修改表名通过ALTER TABLE语句实现</span><br><span class="line">ALTER TABLE oldTablename [TO] newTablename;</span><br><span class="line">##修改完成后同样可以通过DESCRIBE语句进行验证</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-7-2-增加字段"><a href="#3-7-2-增加字段" class="headerlink" title="3.7.2 增加字段"></a>3.7.2 增加字段</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">##MySQL数据库管理系统中通过下列SQL语句来实现新增字段</span><br><span class="line">##tablename为所要修改表的名称，propName表示所要增加字段的名称，propType表示索要增加字段存储数据的数据类##型，pNameNew表示新增的字段名，pNameOld表示已经存在的字段名</span><br><span class="line">##添加在所有字段最后一个位置</span><br><span class="line">ALTER TABLE tablename ADD propName propType;</span><br><span class="line">##添加在表中第一个位置</span><br><span class="line">ALTER TABLE tablename ADD propName propType FIRST;</span><br><span class="line">##添加在pNameOld之后</span><br><span class="line">ALTER TABLE tablename ADD pNameNew propType AFTER pNameOld;</span><br><span class="line">##增加后可通过DESCRIBE语句验证是否被删除</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-7-3-删除字段"><a href="#3-7-3-删除字段" class="headerlink" title="3.7.3 删除字段"></a>3.7.3 删除字段</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##删除字段通过SQL语句ALTER TABLE来实现</span><br><span class="line">ALTER TABLE tablename DROP propName;</span><br><span class="line">##删除后可通过DESCRIBE语句验证是否被删除</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-7-4-修改字段"><a href="#3-7-4-修改字段" class="headerlink" title="3.7.4 修改字段"></a>3.7.4 修改字段</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">##在MySQL中，ALTER TABLE语句可以实现修改字段的操作</span><br><span class="line">##修改字段类型</span><br><span class="line">ALTER TABLE tablename MODIFY porpName propType;</span><br><span class="line">##修改字段的名称</span><br><span class="line">ALTER TABLE tablename CHANGE pNameOld pNameNew pTypeOld;</span><br><span class="line">##同时修改字段名称和类型</span><br><span class="line">ALTER TABLE tablename CHANGE pNameOld pNameNew pTypeNew;</span><br><span class="line">##修改字段的顺序（FIRST表示讲字段调整至表的的第一个位置，AFTER pName2表示将字段调整至pName2字段位置之后）</span><br><span class="line">ALTER TABLE tablename MODIFY pName propName1 propType FIRST|AFTER pName2;</span><br><span class="line">##修改后可以通过DESCRIBE语句进行验证</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-8-操作表的约束"><a href="#3-8-操作表的约束" class="headerlink" title="3.8 操作表的约束"></a>3.8 操作表的约束</h3><p>完整性约束是对字段进行限制，要求用户对该属性进行的操作符合特定的要求，否则讲不执行用户的操作。</p>
+<p><strong>完整性约束条件</strong></p>
+<table>
+<thead>
+<tr>
+<th>约束条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PRIMARY KEY</td>
+<td>标识该属性为该表的主键，可以唯一标识对应的元组</td>
+</tr>
+<tr>
+<td>FOREIGN KEY</td>
+<td>标识该属性为该表的外键，是与之联系的某表的主键</td>
+</tr>
+<tr>
+<td>NOT NULL</td>
+<td>标识该属性不能为空</td>
+</tr>
+<tr>
+<td>UNIQUE</td>
+<td>标识该属性的值是唯一的</td>
+</tr>
+<tr>
+<td>AUTO_INCREMENT</td>
+<td>标识该属性的值自动增加，这是MySQL语句的特色</td>
+</tr>
+<tr>
+<td>DEFAULT</td>
+<td>为该属性设置默认值</td>
+</tr>
+</tbody></table>
+<h4 id="3-8-1设置表字段的非空约束（NOT-NULL-NK）"><a href="#3-8-1设置表字段的非空约束（NOT-NULL-NK）" class="headerlink" title="3.8.1设置表字段的非空约束（NOT NULL,NK）"></a>3.8.1设置表字段的非空约束（NOT NULL,NK）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tablename(</span><br><span class="line">	propName propType NOT NULL,</span><br><span class="line">	...);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-8-2设置表字段的默认值（DAFAULT）"><a href="#3-8-2设置表字段的默认值（DAFAULT）" class="headerlink" title="3.8.2设置表字段的默认值（DAFAULT）"></a>3.8.2设置表字段的默认值（DAFAULT）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##defaultValue为默认值，如果用户插入的新记录中该字段为空值，那么数据库管理系统将会自动插入该默认值</span><br><span class="line">CREATE TABLE tablename(</span><br><span class="line">	propName propType DEFAULT defaultValue,</span><br><span class="line">	...);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-8-3-设置表字段唯一约束（UNIQUE-UK）"><a href="#3-8-3-设置表字段唯一约束（UNIQUE-UK）" class="headerlink" title="3.8.3 设置表字段唯一约束（UNIQUE,UK）"></a>3.8.3 设置表字段唯一约束（UNIQUE,UK）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##设置UK约束后，若用户插入的记录在该字段上的值与其他记录在该字段上的值重复，那么数据库管理系统将报错</span><br><span class="line">CREATE TABLE tablename(</span><br><span class="line">	propName propType UNIQUE,</span><br><span class="line">	...);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-8-4-设置表字段的主键约束（PRIMARY-PK）"><a href="#3-8-4-设置表字段的主键约束（PRIMARY-PK）" class="headerlink" title="3.8.4 设置表字段的主键约束（PRIMARY,PK）"></a>3.8.4 设置表字段的主键约束（PRIMARY,PK）</h4><p>主键是表的以一个特殊字段，能唯一标识该表中的每条信息。主键用来标识每个记录，每个记录的主键值都不同。</p>
+<p>主键的主要目的是帮助数据库管理系统以最快的速度查找到表的某一条信息。主键必须满足的条件就是主键必须是唯一的，表中任意两条记录的主键字段的值笨呢个相同，并且是非空值。</p>
+<p>主键可以是单一的字段，也可以是多个字段的组合。</p>
+<ol>
+<li>单字段主键</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tablename(</span><br><span class="line">	propName propType PRIMARY KEY,</span><br><span class="line">	...);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##若想给某字段的PK约束设置一个名字，可执行SQL语句CONSTRAINT（pk_name为设置的名字）</span><br><span class="line">CREATE TABLE tablename(</span><br><span class="line">	propName propType,</span><br><span class="line">	...</span><br><span class="line">	CONSTRAINT pk_name PRIMARY KEY(propName));</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>多字段主键</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##主键由多个属性组合而成,在属性定义完之后统一设置主键</span><br><span class="line">CREATE TABLE tablename(</span><br><span class="line">	propName1 propType1,</span><br><span class="line">	propName2 propType2,</span><br><span class="line">	...</span><br><span class="line">	[CONSTARINT pk_name] PRIMARY KEY(propName1,propName2));</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-8-5-设置表字段值自动增加（AUTO-INCREMENT）"><a href="#3-8-5-设置表字段值自动增加（AUTO-INCREMENT）" class="headerlink" title="3.8.5 设置表字段值自动增加（AUTO_INCREMENT）"></a>3.8.5 设置表字段值自动增加（AUTO_INCREMENT）</h4><p>AUTO_INCREMENT是MySQL唯一扩展的完整性约束，当向数据库表中插入新记录时，字段上的值会自动生成唯一的ID，在设置该约束时，一个数据库表中只能有一个字段使用该约束且其数据类型必须是整数类型，由于生成的ID唯一，因此该字段也经常会同时设置成PK主键。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tablename(</span><br><span class="line">	propName propType AUTO_INCREMENT,</span><br><span class="line">	...);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-8-6-设置表字段的外键约束（FOREIGN-KEY-FK）"><a href="#3-8-6-设置表字段的外键约束（FOREIGN-KEY-FK）" class="headerlink" title="3.8.6 设置表字段的外键约束（FOREIGN KEY,FK）"></a>3.8.6 设置表字段的外键约束（FOREIGN KEY,FK）</h4><p>外键是表的一个特殊字段，外键约束是为了保证多个表（通常为两个表）之间的参照完整性，即构建两个表的字段之间的参照关系。</p>
+<p>设置外键的两个表之间具有父子关系，即子表中某个字段的值的取值范围由父表决定，在具体设置FK约束时，设置FK约束的字段必须依赖于数据库中已经存在的父表的主键，同时外键可以为空（NULL）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">##tablename_1是要设置外键的表名，propName1_1是要设置外键的字段</span><br><span class="line">##tablename_2是父表的名称，propName2_1是父表中设置主键约束的字段名</span><br><span class="line">##FK_prop为设置的FK约束的名称</span><br><span class="line">CREATE TABLE tablename(</span><br><span class="line">	propName1_1 propType1_1,</span><br><span class="line">	propName1_2 propType1_2,</span><br><span class="line">	...</span><br><span class="line">	[CONSTRAINT FK_prop] FOREIGN KEY(propName1_1)</span><br><span class="line">	REFERENCES tablename_2(propName2_1));</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-数据操作"><a href="#4-数据操作" class="headerlink" title="4. 数据操作"></a>4. 数据操作</h2><h3 id="4-1-插入数据记录"><a href="#4-1-插入数据记录" class="headerlink" title="4.1 插入数据记录"></a>4.1 插入数据记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">##插入完整数据记录</span><br><span class="line">INSERT INTO tablename(field1,field2,field3,...,fieldn)</span><br><span class="line">	VALUES(value1,value2,value3,...,valuen);</span><br><span class="line">##插入部分数据记录，语句与上述相同，只需要将需要插入的fieldn列出并且valuen与之一一对应即可</span><br><span class="line">##插入多条完整数据记录</span><br><span class="line">INSERT INTO tablename(field1,field2,field3,...,fieldn)</span><br><span class="line">	VALUES(value11,value12,value13,...,value1n),</span><br><span class="line">	VALUES(value21,value22,value23,...,value2n),</span><br><span class="line">	...</span><br><span class="line">	VALUES(valuem1,valuem2,valuem3,...,valuemn);</span><br><span class="line">##另一种语法</span><br><span class="line">INSERT INTO tablename</span><br><span class="line">VALUES(value11,value12,value13,...,value1n),</span><br><span class="line">	  (value21,value22,value23,...,value2n),</span><br><span class="line">	  ...</span><br><span class="line">	  (valuem1,valuem2,valuem3,...,valuemn);</span><br><span class="line">##插入多条部分数据记录，结合插入多条完整记录和插入部分数据记录语法即可</span><br><span class="line">##插入JSON结构的数据记录</span><br><span class="line">INSERT INTO tablename(jsonfield)</span><br><span class="line">	VALUES(jsonObjectValue);</span><br><span class="line">##插入完成后可通过SELECT语句查看是否插入</span><br><span class="line">SELECT * FROM tablename;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-更新数据记录"><a href="#4-2-更新数据记录" class="headerlink" title="4.2 更新数据记录"></a>4.2 更新数据记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">##更新特定数据记录（参数CONDITION指定更新满足条件的特定数据记录）</span><br><span class="line">UPDATE tablename</span><br><span class="line">SET field1&#x3D;value1,field2&#x3D;value2,field3&#x3D;value3</span><br><span class="line">	WHERE CONDITION;</span><br><span class="line">##更新所有数据记录（参数CONDITION表示满足表tablename中的所有数据记录，或不使用关键字WHERE语句）	</span><br><span class="line">UPDATE tablename</span><br><span class="line">SET field1&#x3D;value1,field2&#x3D;value2,field3&#x3D;value3</span><br><span class="line">	WHERE CONDITION;</span><br><span class="line">##更新JSON结构的数据记录（colname为JSON类型的字段，path为路径，通常为美元符号加key的形式“$.key”，val为要添加的##新值，WHERE为条件语句）</span><br><span class="line">UPDATE tablename</span><br><span class="line">SET colname &#x3D; JSON_REPLACE(colname,path,val)</span><br><span class="line">	WHERE CONDITION;</span><br><span class="line">##更新完成后可通过SELECT语句查看是否插入</span><br><span class="line">SELECT * FROM tablename;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-删除数据记录"><a href="#4-3-删除数据记录" class="headerlink" title="4.3 删除数据记录"></a>4.3 删除数据记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##删除特定数据记录</span><br><span class="line">DELETE FROM tablename</span><br><span class="line">	WHERE CONDITION;</span><br><span class="line">##删除所有数据记录（参数CONDITION表示满足表tablename中的所有数据记录，或不使用关键字WHERE语句）</span><br><span class="line">DELETE FROM tablename WHERE CONDITION;</span><br><span class="line"></span><br><span class="line">##更新完成后可通过SELECT语句查看是否插入</span><br><span class="line">SELECT * FROM tablename;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-数据查询"><a href="#5-数据查询" class="headerlink" title="5. 数据查询"></a>5. 数据查询</h2><h3 id="5-1-简单查询"><a href="#5-1-简单查询" class="headerlink" title="5.1 简单查询"></a>5.1 简单查询</h3><p>SELECT语句的基本语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##field1~fieldn参数表示需要查询的字段名；tablename参数表示表的名称；CONDITION1表示查询条件；</span><br><span class="line">##fieldm参数表示按该字段中的数据进行分组；CONDITION2参数表示满足该表达式的数据才能输出；</span><br><span class="line">##fieldn参数指按该字段中数据进行排序，排序方式由ASC（升序，默认参数）或DESC（降序）两个参数指出。</span><br><span class="line">	SELECT field1 field2 ... fieldn</span><br><span class="line">FROM tablename</span><br><span class="line">[WHERE CONDITION1]</span><br><span class="line">[GROUP BY fieldm [HAVING CONDITION2]]</span><br><span class="line">[ORDER BY fieldn [ASC|DESC]]</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-1-查询所有字段数据"><a href="#5-1-1-查询所有字段数据" class="headerlink" title="5.1.1 查询所有字段数据"></a>5.1.1 查询所有字段数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##列出表的所有列</span><br><span class="line">SELECT field1,field2,...,fieldn FROM tablename;</span><br><span class="line">##使用“*”，该方法同样可以查询查询所有字段数据</span><br><span class="line">##“*”可以替代表中所有符号，但不够灵活，只能按照表中字段的给固定顺序显示，不能随便改变字段的顺序</span><br><span class="line">SELECT * FROM tablename;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-2-查询指定字段数据"><a href="#5-1-2-查询指定字段数据" class="headerlink" title="5.1.2 查询指定字段数据"></a>5.1.2 查询指定字段数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##语法与查询所有字段数据类似，但是只需列出需要查询的字段名即可</span><br><span class="line">SELECT field1,field2,...,fieldn FROM tablename;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-3-DISTINCT查询"><a href="#5-1-3-DISTINCT查询" class="headerlink" title="5.1.3 DISTINCT查询"></a>5.1.3 DISTINCT查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##DISTINCT可以去掉查询结果中重复的数据，实现查询不重复数据</span><br><span class="line">SELECT DISTINCT field1 field2 field3 ... fieldn</span><br><span class="line">	FROM tablename;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-4-IN查询"><a href="#5-1-4-IN查询" class="headerlink" title="5.1.4 IN查询"></a>5.1.4 IN查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##IN用来实现判断字段的数值是否在指集合的条件查询，若fieldm的值存在集合中，则该记录会被查询出来</span><br><span class="line">##若需要查询fieldm的值不在集合中的记录，则在IN前面加上NOT即可</span><br><span class="line">SELECT field1,field2,...,fieldn</span><br><span class="line">FROM tablename WHERE fieldm IN(value1,value2,value3,...,valuen);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>使用关键字IN时，若集合中存在NULL，则不会影响查询结果，使用关键字NOT IN，若集合中存在NULL，则不会由任何结果。</li>
+</ul>
+</blockquote>
+<h4 id="5-1-5-BETWEEN-AND查询"><a href="#5-1-5-BETWEEN-AND查询" class="headerlink" title="5.1.5 BETWEEN AND查询"></a>5.1.5 BETWEEN AND查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##BETWEEN AND用于实现判断字段的数值是否在指定范围内的条件查询</span><br><span class="line">##若需要查询不符合范围的数据记录，在BETWEEN前加上NOT即可</span><br><span class="line">SELECT field1,field2,...,fieldn</span><br><span class="line">FROM tablename WHERE fildm BETWEEN minvalue AND maxvalue;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-6-LIKE模糊查询"><a href="#5-1-6-LIKE模糊查询" class="headerlink" title="5.1.6 LIKE模糊查询"></a>5.1.6 LIKE模糊查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##fieldn表示表中的字段名字，通过关键字LIKE来判断字段field的值是否与value字符串匹配，字符串必须加上&#39;&#39;或&quot;&quot;</span><br><span class="line">##若需要查询不匹配的数据记录，在LIKE前加上NOT即可</span><br><span class="line">SELECT field1,field2,...,fieldn</span><br><span class="line">FROM tablename WHERE fieldm LIKE value;</span><br></pre></td></tr></table></figure>
+
+<p>由于关键字LIKE可以实现模糊查询，因此该关键字后面的字符串参数除了可以使用完整的字符串外，还可以包含通配符</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_</td>
+<td>该通配符能匹配单个字符</td>
+</tr>
+<tr>
+<td>%</td>
+<td>该通配符可以匹配任意长度的字符串，既可以是0个字符，1个字符，也可以是很多字符</td>
+</tr>
+</tbody></table>
+<p>进行模糊查询时将需要模糊查询的部分放入字符串中即可，如”…_…”，”…%…”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##使用LIKE关键字查询其他类型数据，如：查询带有数字9的所有记录</span><br><span class="line">SELECT name,English FROM score WHERE English LIKE &#39;%9%&#39;;</span><br><span class="line">##若匹配&quot;%%&quot;，就表示查询所有数据记录</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-7-对查询结果排序"><a href="#5-1-7-对查询结果排序" class="headerlink" title="5.1.7 对查询结果排序"></a>5.1.7 对查询结果排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##参数fieldm表示按照该字段进行排序，ASC表示按升序进行排序（默认），DESC表示按照降序进行排序</span><br><span class="line">SELECT field1,field2,field3,...,fieldn</span><br><span class="line">FROM tablename ORDER BY fieldm [ASC|DESC];</span><br><span class="line">##也可指定多个字段进行排序</span><br><span class="line">SELECT field1,field2,field3,...,fieldn</span><br><span class="line">FROM tablename ORDER BY fieldm1 [ASC|DESC],fieldm2 [ASC|DESC];</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-8-简单分组查询"><a href="#5-1-8-简单分组查询" class="headerlink" title="5.1.8 简单分组查询"></a>5.1.8 简单分组查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##MySQL提供了5个统计函数帮助用户统计数据，具体使用时，先根据指定特定条件分组或针对表中所有记录数，后统计计算。</span><br><span class="line">##GROUP BY单独使用时，默认查询出每个分组中随机的一条记录</span><br><span class="line">SELECT function()</span><br><span class="line">FROM tablename WHERE CONDITION GROUP BY field;</span><br><span class="line">##只进行简单分组查询</span><br><span class="line">SELECT * FROM tablename WHERE CONDITION GROUP BY field;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-9-统计分组查询"><a href="#5-1-9-统计分组查询" class="headerlink" title="5.1.9 统计分组查询"></a>5.1.9 统计分组查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##GROUP_CONCAT()可以实现显示每个分组中的指定字段，COUNT()可以显示每个分组中信息的个数</span><br><span class="line">SELECT GROUP_CONCAT(field)</span><br><span class="line">FROM tablename</span><br><span class="line">WHERE CONDITION GROUP BY field;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-联合查询"><a href="#5-2-联合查询" class="headerlink" title="5.2 联合查询"></a>5.2 联合查询</h3><h4 id="5-2-1-内连接查询"><a href="#5-2-1-内连接查询" class="headerlink" title="5.2.1 内连接查询"></a>5.2.1 内连接查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">##连接查询实现方式一种是在FROM子句中利用逗号区分多个表，在WHERE子句中通过逻辑表达式来实现匹配条件从而实现表的连接</span><br><span class="line">##另一种是ANSI连接语法形式，在FROM子句中使用&quot;JOIN...ON&quot;关键字，而连接条件写在关键字ON子句中。（推荐）</span><br><span class="line">##fieldn表示要查询的字段名源于tablename1和tablename2，INNER JOIN表示进行内连接，CONDITION表示进行匹配的条件</span><br><span class="line">SELECT field1,field2,...,fieldn FROM tablename1</span><br><span class="line">INNER JOIN tablename2 [INNER JOIN tablenamen] ON CONDITION;</span><br><span class="line">##表名过长时可采用取表别名的方法方便操作</span><br><span class="line">##tablenamen为表原来的名字，othertablename为新表名</span><br><span class="line">SELECT field1,field2,...,fieldn [AS] otherfieldn</span><br><span class="line">FROM tablename1 [AS] othertablename1,</span><br><span class="line">	 ...</span><br><span class="line">	 tabelenamen [AS] othertablenamen;</span><br></pre></td></tr></table></figure>
+
+<p>内连接查询可分为自连接，等值连接和不等连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##自连接就是指表与其自身进行连接</span><br><span class="line"></span><br><span class="line">##等值连接就是在关键字ON后的匹配条件中通过等于关系运算符（&#x3D;）来实现等值条件</span><br><span class="line"></span><br><span class="line">##不等连接就是在关键字ON后的匹配条件中通过除了等于关系运算符来实现不等条件外，还可以使用关系运算符，包含 “&gt;”， ##“&gt;&#x3D;”，“&lt;”，“&lt;&#x3D;”和“!&#x3D;”等运算符号</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-2-外连接查询（）"><a href="#5-2-2-外连接查询（）" class="headerlink" title="5.2.2 外连接查询（）"></a>5.2.2 外连接查询（）</h4><h4 id="5-2-3-合并查询数据记录（）"><a href="#5-2-3-合并查询数据记录（）" class="headerlink" title="5.2.3 合并查询数据记录（）"></a>5.2.3 合并查询数据记录（）</h4><h4 id="5-2-4-子查询（）"><a href="#5-2-4-子查询（）" class="headerlink" title="5.2.4 子查询（）"></a>5.2.4 子查询（）</h4><h2 id="6-索引"><a href="#6-索引" class="headerlink" title="6.索引"></a>6.索引</h2><h3 id="6-1-什么是索引"><a href="#6-1-什么是索引" class="headerlink" title="6.1 什么是索引"></a>6.1 什么是索引</h3><p>索引是由数据库表中的一列或多列组合而成，其作用是提高对表中数据的查询速度。</p>
+<p><strong>含义和特点</strong></p>
+<p>不同的存出引擎定义了每个表的最大索引数和最大索引长度。所有存储引擎对每个表至少支持16个存储引擎，总索引长度至少为256字节。</p>
+<p>索引有两种存储类型，包括B型数（BTREE）索引和哈希（HASH）索引。InnoDB和MyISAM存储引擎支持BTREE索引，MEMORY存储引擎支持HASH索引和BTREE索引，默认为前者。</p>
+<blockquote>
+<ul>
+<li>索引的优点是可以提高检索数据的速度，对于有依赖关系的子表和父表联合查询时，可以提高查询速度；使用分组和排序子句进行数据查询时，同样可以显著节省查询中分组和排序的时间。</li>
+<li>索引的缺点是创建和维护索引需要耗费时间；索引需要占用物理空间</li>
+<li>索引可以提高查询的速度，但是会影响插入记录的速度，因为向有索引的表中插入记录时，数据库系统会按照索引进行排序而降低插入记录速度，插入大量记录时的速度影响更加明显，这种情况下最好的办法就是先删除表中的索引，然后插入数据，插入完成后再创建索引。</li>
+</ul>
+</blockquote>
+<p><strong>分类</strong></p>
+<ol>
+<li>普通索引</li>
+<li>唯一性索引</li>
+<li>全文索引</li>
+<li>单列索引</li>
+<li>多列索引</li>
+<li>空间索引</li>
+</ol>
+<p><strong>设计原则</strong></p>
+<blockquote>
+<ul>
+<li>选择唯一性索引</li>
+<li>为经常需要排序、分组和联合操作的字段建立索引</li>
+<li>为经常作为查询条件的字段建立索引</li>
+<li>限制索引的数目</li>
+<li>尽量使用数据量少的索引</li>
+<li>尽量使用前缀来索引</li>
+<li>删除不再使用或者很少使用的索引</li>
+</ul>
+</blockquote>
+<h3 id="6-2-创建和查看索引（）"><a href="#6-2-创建和查看索引（）" class="headerlink" title="6.2 创建和查看索引（）"></a>6.2 创建和查看索引（）</h3><h3 id="6-3-MySQL-8中索引新特性（）"><a href="#6-3-MySQL-8中索引新特性（）" class="headerlink" title="6.3 MySQL 8中索引新特性（）"></a>6.3 MySQL 8中索引新特性（）</h3><h3 id="6-4-删除索引（）"><a href="#6-4-删除索引（）" class="headerlink" title="6.4 删除索引（）"></a>6.4 删除索引（）</h3><h2 id="7-视图"><a href="#7-视图" class="headerlink" title="7. 视图"></a>7. 视图</h2><h3 id="7-1-什么是视图"><a href="#7-1-什么是视图" class="headerlink" title="7.1 什么是视图"></a>7.1 什么是视图</h3><h3 id="7-2-创建视图"><a href="#7-2-创建视图" class="headerlink" title="7.2 创建视图"></a>7.2 创建视图</h3><h3 id="7-3-查看视图"><a href="#7-3-查看视图" class="headerlink" title="7.3 查看视图"></a>7.3 查看视图</h3><h3 id="7-4-修改视图"><a href="#7-4-修改视图" class="headerlink" title="7.4 修改视图"></a>7.4 修改视图</h3><h3 id="7-5-更新视图"><a href="#7-5-更新视图" class="headerlink" title="7.5 更新视图"></a>7.5 更新视图</h3><h3 id="7-6-删除视图"><a href="#7-6-删除视图" class="headerlink" title="7.6 删除视图"></a>7.6 删除视图</h3><h2 id="8-存储过程和函数"><a href="#8-存储过程和函数" class="headerlink" title="8. 存储过程和函数"></a>8. 存储过程和函数</h2><h3 id="8-1-创建存储过程和函数"><a href="#8-1-创建存储过程和函数" class="headerlink" title="8.1 创建存储过程和函数"></a>8.1 创建存储过程和函数</h3><h3 id="8-2-调用存储过程和函数"><a href="#8-2-调用存储过程和函数" class="headerlink" title="8.2 调用存储过程和函数"></a>8.2 调用存储过程和函数</h3><h3 id="8-3-查看存储过程和函数"><a href="#8-3-查看存储过程和函数" class="headerlink" title="8.3 查看存储过程和函数"></a>8.3 查看存储过程和函数</h3><h3 id="8-4-修改存储过程和函数"><a href="#8-4-修改存储过程和函数" class="headerlink" title="8.4 修改存储过程和函数"></a>8.4 修改存储过程和函数</h3><h3 id="8-5-删除存储过程和函数"><a href="#8-5-删除存储过程和函数" class="headerlink" title="8.5 删除存储过程和函数"></a>8.5 删除存储过程和函数</h3><h2 id="9-触发器"><a href="#9-触发器" class="headerlink" title="9. 触发器"></a>9. 触发器</h2><h3 id="9-1-什么时候使用触发器"><a href="#9-1-什么时候使用触发器" class="headerlink" title="9.1 什么时候使用触发器"></a>9.1 什么时候使用触发器</h3><h3 id="9-2-创建触发器"><a href="#9-2-创建触发器" class="headerlink" title="9.2 创建触发器"></a>9.2 创建触发器</h3><h3 id="9-3-查看触发器"><a href="#9-3-查看触发器" class="headerlink" title="9.3 查看触发器"></a>9.3 查看触发器</h3><h3 id="9-4-删除触发器"><a href="#9-4-删除触发器" class="headerlink" title="9.4 删除触发器"></a>9.4 删除触发器</h3><h2 id="10-事务和锁"><a href="#10-事务和锁" class="headerlink" title="10. 事务和锁"></a>10. 事务和锁</h2><h3 id="10-1-事务概述"><a href="#10-1-事务概述" class="headerlink" title="10.1 事务概述"></a>10.1 事务概述</h3><h3 id="10-2-MySQL事务控制语句"><a href="#10-2-MySQL事务控制语句" class="headerlink" title="10.2 MySQL事务控制语句"></a>10.2 MySQL事务控制语句</h3><h3 id="10-3-MySQL事务隔离级别"><a href="#10-3-MySQL事务隔离级别" class="headerlink" title="10.3 MySQL事务隔离级别"></a>10.3 MySQL事务隔离级别</h3><h3 id="10-4-InnoDB锁机制"><a href="#10-4-InnoDB锁机制" class="headerlink" title="10.4 InnoDB锁机制"></a>10.4 InnoDB锁机制</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/11/MySQL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C++-Primer第〇部分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
